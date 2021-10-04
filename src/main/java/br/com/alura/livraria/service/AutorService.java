@@ -3,6 +3,8 @@ package br.com.alura.livraria.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,7 @@ public class AutorService {
 		return autores.map(a-> modelMapper.map(a, AutorDto.class));
 	}	
 	
+	@Transactional
 	public AutorDto cadastrar(AutorFormDto dto) {
 		Autor autor = modelMapper.map(dto, Autor.class);
 		autorRepository.save(autor);

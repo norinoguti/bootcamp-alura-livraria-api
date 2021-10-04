@@ -1,6 +1,6 @@
 package br.com.alura.livraria.service;
 
-import java.util.List;
+import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,7 @@ public class LivroService {
 		return livros.map(l-> modelMapper.map(l, LivroDto.class));								
 	}
 	
+	@Transactional
 	public LivroDto cadastrar(LivroFormDto dto) {
 		Livro livro = modelMapper.map(dto, Livro.class);
 		livro.setId(null);
