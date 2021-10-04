@@ -1,6 +1,7 @@
 package br.com.alura.livraria.dto;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -15,9 +16,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AutorDto {
+	private Long id;
 	private String nome;
 	private String email;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dataNascimento;
 	
-}
+	}
+	
+

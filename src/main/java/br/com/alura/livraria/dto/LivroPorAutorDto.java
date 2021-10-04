@@ -1,0 +1,14 @@
+package br.com.alura.livraria.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@AllArgsConstructor
+public class LivroPorAutorDto {
+	private String autor;
+	private Long quantidadeLivros;
+	private Double percentual;
+	
+}
