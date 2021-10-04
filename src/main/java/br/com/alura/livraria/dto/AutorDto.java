@@ -13,6 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AutorDto {
 	private String nome;
 	private String email;

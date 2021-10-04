@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +30,7 @@ public class Autor {
 	private Long id;
 	private String nome;
 	private String email;
-	private LocalDate dataNascimento;
+	private LocalDate dataNascimento;	
 	private String miniCurriculo;
 
 }
