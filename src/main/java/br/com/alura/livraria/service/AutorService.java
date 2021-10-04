@@ -1,8 +1,5 @@
 package br.com.alura.livraria.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
