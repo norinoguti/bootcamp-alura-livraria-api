@@ -17,4 +17,6 @@ public class RelatorioService {
 	public List<LivroPorAutorDto> relatorioLivrosPorAutor(){
 		return repository.relatorioLivroPorAutor();
 	}
+	
+	
 }

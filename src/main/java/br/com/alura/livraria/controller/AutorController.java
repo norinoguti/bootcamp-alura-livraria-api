@@ -25,21 +25,20 @@ import br.com.alura.livraria.service.AutorService;
 public class AutorController {
 	@Autowired
 	private AutorService service;
-	
+
 	@GetMapping
-	public Page<AutorDto> listar(@PageableDefault(size=10) Pageable paginacao){
+	public Page<AutorDto> listar(@PageableDefault(size = 10) Pageable paginacao) {
 		return service.listar(paginacao);
 	}
 
 	@PostMapping
-	public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorFormDto dto,
-			UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorFormDto dto, UriComponentsBuilder uriBuilder) {
+
 		AutorDto autorDto = service.cadastrar(dto);
-		
-		 URI uri = uriBuilder
+
+		URI uri = uriBuilder
 				.path("/autores{id}")
-				.buildAndExpand(autorDto.getId())
-				.toUri();
+				.buildAndExpand(autorDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(autorDto);
 	}
 }
