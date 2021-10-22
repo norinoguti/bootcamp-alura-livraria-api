@@ -11,7 +11,8 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class AutorLivroDto {	
+public class AutorLivroDto {
+	private Long autorId;
 	private String nome;
 
 }
