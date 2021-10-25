@@ -10,12 +10,14 @@ import br.com.alura.livraria.modelo.Livro;
 
 public interface LivroRepository extends JpaRepository<Livro, Long> {
 
-	@Query("select new br.com.alura.livraria.dto.LivroPorAutorDto("
+	@Query("SELECT "
+			+ "new br.com.alura.livraria.dto.LivroPorAutorDto("
 			+ " a.nome, "
-			+ "count(l.titulo), "
-			+ "count(l.titulo)* 1.0 /(select count(l1.titulo) from Livro l1) * 100.0)"
-			+ " from Livro l inner join l.autor a "
-			+ " group by a.nome")			
+			+ "COUNT(l.titulo), "
+			+ "(SELECT COUNT(l1.titulo) FROM Livro l1))"
+			+ " FROM Livro l INNER JOIN l.autor a "
+			+ " GROUP BY a.nome")			
+	
 	List<LivroPorAutorDto> relatorioLivroPorAutor();
 	
 }
