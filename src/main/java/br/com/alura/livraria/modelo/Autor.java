@@ -48,4 +48,14 @@ public class Autor {
 		this.miniCurriculo = miniCurriculo;
 	}
 
+	public void AutorLivro(Long id, String nome, String email, LocalDate dataNascimento, String miniCurriculo) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.dataNascimento = dataNascimento;
+		this.miniCurriculo = miniCurriculo;
+	}
+	
+	
+
 }
