@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alura.livraria.dto.LivroPorAutorDto;
 import br.com.alura.livraria.service.RelatorioService;
+import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping("/relatorios")
+@Api(tags = "Relatórios")
 public class RelatoriosController {
 	
 	@Autowired
