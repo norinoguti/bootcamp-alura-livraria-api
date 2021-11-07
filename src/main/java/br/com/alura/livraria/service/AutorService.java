@@ -2,7 +2,6 @@ package br.com.alura.livraria.service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.modelmapper.ModelMapper;
@@ -14,10 +13,8 @@ import org.springframework.stereotype.Service;
 import br.com.alura.livraria.dto.AtualizacaoAutorFormDto;
 import br.com.alura.livraria.dto.AutorDto;
 import br.com.alura.livraria.dto.AutorFormDto;
-import br.com.alura.livraria.dto.LivroDto;
 import br.com.alura.livraria.modelo.Autor;
 import br.com.alura.livraria.repository.AutorRepository;
-import br.com.alura.livraria.repository.LivroRepository;
 
 @Service
 public class AutorService {
@@ -35,6 +32,7 @@ public class AutorService {
 	@Transactional
 	public AutorDto cadastrar(AutorFormDto dto) {
 		Autor autor = modelMapper.map(dto, Autor.class);
+		
 		autorRepository.save(autor);
 		return modelMapper.map(autor, AutorDto.class);
 	}

@@ -1,7 +1,10 @@
 package br.com.alura.livraria.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -23,13 +26,14 @@ import br.com.alura.livraria.modelo.Usuario;
 import br.com.alura.livraria.repository.PerfilRepository;
 import br.com.alura.livraria.repository.UsuarioRepository;
 
+
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
-@Transactional
-class AutorControllerTest {
-	
+@ActiveProfiles("test")//executar utilizando database de teste
+@Transactional //para fazer o rollback após executar o teste
+class UsuarioControllerTest {
 	
 	@Autowired
 	private MockMvc mvc;
@@ -56,38 +60,30 @@ class AutorControllerTest {
 	}
 
 	@Test
-	void naoDeveriaCadastarAutorComDadosIncompletos() throws Exception {
+	void naoDeveriaCadastrarUsuarioComDadosIncompletos() throws Exception {		
 		String json = "{}";
-		
 		mvc.perform(
-				 post("/autores")
-				 .contentType(MediaType.APPLICATION_JSON)
-				 .content(json)
-				 .header("Authorization","Bearer " + token))
-				 .andExpect(status().isBadRequest());
-	
+				post("/usuarios") //método pertence a biblioteca MockMvcRequestBuilders
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(json)
+				.header("Authorization", "Bearer " + token))
+		
+				.andExpect(status().isBadRequest());//método status pertence a biblioteca MockMvcResultMatchers
 	}
-	
 	
 	@Test
-	void deveriaCadastarAutorComDadosCompletos() throws Exception {
-	
-		String json = "{\"nome\":\"Dan Brown\","
-				+ "\"email\":\"dan@email.com\","
-				+ "\"dataNascimento\":\"20/05/1950\","
-				+ "\"miniCurriculo\":\"Autor de inumeros sucessos\"}";
+	void deveriaCadastrarUsuarioComDadosCompletos() throws Exception {
+		String json = "{\"nome\":\"fulano\",\"login\":\"fulano@email.com\",\"perfilId\":1}";
+		String jsonEsperado = "{\"nome\":\"fulano\",\"login\":\"fulano@email.com\"}";
 		
 		mvc.perform(
-				 post("/autores")
-				 	.contentType(MediaType.APPLICATION_JSON)
-					.content(json)
-					.header("Authorization","Bearer " + token))
-					.andExpect(status().isCreated())
-					.andExpect(header().exists("Location"))
-					.andExpect(content().json(json));
-		}
-	
+				post("/usuarios") //método pertence a biblioteca MockMvcRequestBuilders
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(json)
+				.header("Authorization", "Bearer " + token))
+				.andExpect(status().isCreated())//método status pertence a biblioteca MockMvcResultMatchers
+				.andExpect(header().exists("Location"))
+				.andExpect(content().json(jsonEsperado));
 	}
-	
-	
 
+}
