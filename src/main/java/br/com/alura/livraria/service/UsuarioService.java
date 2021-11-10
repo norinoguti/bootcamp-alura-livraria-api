@@ -1,6 +1,6 @@
 package br.com.alura.livraria.service;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
@@ -49,7 +49,7 @@ public class UsuarioService {
 		Perfil perfil = perfilRepository.getById(dto.getPerfilId());
 		usuario.adicionarPerfil(perfil);
 		// cria senha automaticamente
-		String senha = new Random().nextInt(99999) + "";
+		String senha = new SecureRandom().nextInt(99999) + "";
 		System.out.println(usuario.getSenha());
 		usuario.setSenha(bCryptPasswordEncoder.encode(senha));
 		//System.out.println(usuario.getSenha());
