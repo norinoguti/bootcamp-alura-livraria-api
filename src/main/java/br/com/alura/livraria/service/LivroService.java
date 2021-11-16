@@ -2,8 +2,6 @@ package br.com.alura.livraria.service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,7 @@ public class LivroService {
 	@Autowired
 	private AutorRepository autorRepository;
 	
-	private ModelMapper modelMapper = new ModelMapper();
+	private ModelMapper modelMapper= new ModelMapper();
 	
 	
 	public Page<LivroDto>listar(Pageable paginacao){

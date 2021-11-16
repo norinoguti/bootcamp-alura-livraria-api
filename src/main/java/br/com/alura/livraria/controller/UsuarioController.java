@@ -73,3 +73,4 @@ public class UsuarioController {
 		return ResponseEntity.ok(dto);
 	}
 }
+

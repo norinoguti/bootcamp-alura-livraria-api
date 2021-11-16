@@ -21,7 +21,9 @@ public class AutorService {
 	
 	@Autowired
 	private AutorRepository autorRepository;
-	private ModelMapper modelMapper = new ModelMapper();
+	
+	@Autowired
+	private ModelMapper modelMapper= new ModelMapper();
 	
 	
 	public Page<AutorDto>listar(Pageable paginacao){
