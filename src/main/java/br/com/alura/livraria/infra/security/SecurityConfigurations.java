@@ -32,8 +32,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	@Bean
-	protected AuthenticationManager authenticationManager() throws Exception{
-		return super.authenticationManager();
+	public AuthenticationManager authenticationManagerBean() throws Exception{
+		return super.authenticationManagerBean();
 		
 	}
 
@@ -48,6 +48,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 		http
 		.authorizeRequests()
 		.antMatchers(HttpMethod.POST,"/auth").permitAll()
+		.antMatchers(HttpMethod.GET,"/home").permitAll()
 		.antMatchers("/usuarios/**").hasRole("ADMIN")
 		.antMatchers(HttpMethod.POST,"/autores/**").hasRole("ADMIN")
 		.antMatchers(HttpMethod.POST,"/livros/**").hasRole("ADMIN")
