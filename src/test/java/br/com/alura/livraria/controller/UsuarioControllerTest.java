@@ -73,8 +73,8 @@ class UsuarioControllerTest {
 	
 	@Test
 	void deveriaCadastrarUsuarioComDadosCompletos() throws Exception {
-		String json = "{\"nome\":\"fulano\",\"login\":\"fulano@email.com\",\"perfilId\":1}";
-		String jsonEsperado = "{\"nome\":\"fulano\",\"login\":\"fulano@email.com\"}";
+		String json = "{\"nome\":\"fulano\",\"login\":\"fulano@email.com\",\"email\":\"fulano@email.com\",\"perfilId\":1}";
+		String jsonEsperado = "{\"nome\":\"fulano\",\"login\":\"fulano@email.com\",\"login\":\"fulano@email.com\"}";
 		
 		mvc.perform(
 				post("/usuarios") //método pertence a biblioteca MockMvcRequestBuilders

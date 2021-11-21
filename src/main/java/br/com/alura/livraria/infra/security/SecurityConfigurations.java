@@ -71,9 +71,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 		.antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**");
 	}
 	
-//	public static void main(String[] args) {
-//		System.out.println(new BCryptPasswordEncoder().encode("1234"));
-//	}
+	public static void main(String[] args) {
+		System.out.println(new BCryptPasswordEncoder().encode("1234"));
+	}
 
 	
 
